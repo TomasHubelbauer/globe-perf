@@ -6,10 +6,10 @@ void async function () {
   // JavaScript code inlining and caching artifacts (might not be a thing
   // that's necessary or perhaps this is not enough and the profile might
   // need to be purged, too, but fow now this is what we have)
-  const externalRuns = 5;
+  const externalRuns = 3;
 
   // How many times to run the `window.test` function found in the test page
-  const internalRuns = 1000;
+  const internalRuns = 100;
 
   const results = [];
 
@@ -21,12 +21,17 @@ void async function () {
     const tests = ['globe', 'intl', 'moment'];
     for (const test of tests) {
       const marks = [];
-      for (let run = 0; run < externalRuns; run++) {
-        const browser = await puppeteer.launch({ headless: false });
+      for (let run = 0; run < externalRuns + 1 /* Trace run */; run++) {
+        const browser = await puppeteer.launch({ headless: run === externalRuns - 1 });
         try {
           const [page] = await browser.pages();
           const url = `file://${__dirname}/test/${test}-${locale.name}/build/index.html`;
           await page.goto(url);
+
+          if (run === externalRuns - 1) {
+            await page.tracing.start({ path: `${__dirname}/${test}-${locale.name}-trace.json`, categories: ['disabled-by-default-v8.cpu_profiler'] });
+          }
+
           const mark = await page.evaluate((internalRuns, date, expected) => {
             const stamp = performance.now();
             for (let index = 0; index < internalRuns; index++) {
@@ -38,6 +43,10 @@ void async function () {
 
             return performance.now() - stamp;
           }, internalRuns, new Date(2020, 3, 16, 10, 0, 0).toISOString(), locale.expected[test]);
+
+          if (run === externalRuns - 1) {
+            await page.tracing.stop();
+          }
 
           marks.push(mark);
           console.log(`Test ${test} ${locale.name}, run ${run + 1}: ${mark} ms SUCCESS`);
