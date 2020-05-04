@@ -1,3 +1,5 @@
+const intl = new Intl.DateTimeFormat('cs-CZ');
+
 window.test = function test(date) {
-  return new Intl.DateTimeFormat('cs-CZ').format(new Date(date));
+  return intl.format(new Date(date));
 };

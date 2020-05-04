@@ -1,5 +1,7 @@
 import { DateTimeFormatter } from '@microsoft/globe';
 
+const dtf = new DateTimeFormatter('en-US');
+
 window.test = function test(date) {
-  return new DateTimeFormatter('en-US').formatDateTime(new Date(date));
+  return dtf.formatDateTime(new Date(date));
 };
