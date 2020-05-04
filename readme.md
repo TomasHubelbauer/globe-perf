@@ -12,12 +12,9 @@ This test only covers using Globe on the web, Node tests are not provided.
 
 See [`results.md`](results.md).
 
+Intl is consistently the fastest, Moment is about 5x slower and Globe
+is very slow, about 40x slower than Intl.
+
 ## To-Do
 
-### Introduce more complex test scenarios
-
-The current rudimetary test shows almost equal performance across the board,
-which makes sense, because it is the most common case: formatting in en-us.
-
-More tests need to be introduced, specifically dealing with ICU, to show the
-real differences.
+### Profile Intl and Globe and determine the bottle-neck in Globe
