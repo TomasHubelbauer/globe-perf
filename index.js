@@ -33,15 +33,20 @@ void async function () {
           }
 
           const mark = await page.evaluate((internalRuns, date, expected) => {
-            const stamp = performance.now();
+            // Warm up caches if used
+            window.test(date);
+
+            let duration = 0;
             for (let index = 0; index < internalRuns; index++) {
+              const stamp = performance.now();
               const actual = window.test(date);
+              duration += performance.now() - stamp;
               if (actual !== expected) {
                 throw new Error(`'${actual}' does not match '${expected}'.`);
               }
             }
 
-            return performance.now() - stamp;
+            return duration;
           }, internalRuns, new Date(2020, 3, 16, 10, 0, 0).toISOString(), locale.expected[test]);
 
           if (run === externalRuns - 1) {

@@ -4,9 +4,9 @@ External runs: 3
 
 Internal runs: 100
 
-- globe en: 44.02249999839114 ms
-- intl en: 0.7037499999569263 ms
-- moment en: 5.281249996187398 ms
-- globe cs: 39.938749996508704 ms
-- intl cs: 0.8149999994202517 ms
-- moment cs: 4.760000003443565 ms
+- globe en: 0.7262499930220656 ms
+- intl en: 0.5762499968113843 ms
+- moment en: 2.18750002750312 ms
+- globe cs: 0.7712499900662806 ms
+- intl cs: 0.5587499872490298 ms
+- moment cs: 2.037499983998714 ms
