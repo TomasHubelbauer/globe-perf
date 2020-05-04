@@ -6,10 +6,7 @@ This test only covers using Globe on the web, Node tests are not provided.
 
 ## Running
 
-The Globe and Moment tests use CRA so that I didn't have to bother setting
-up and maintaing a WebPack config.
-
-Build both first and then run the script [`run.sh`](run.sh).
+`./run.sh`
 
 ## Results
 
