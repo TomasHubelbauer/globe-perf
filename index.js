@@ -37,7 +37,7 @@ void async function () {
             }
 
             return performance.now() - stamp;
-          }, internalRuns, new Date(2020, 3, 16, 10, 0, 0), locale.expected[test]);
+          }, internalRuns, new Date(2020, 3, 16, 10, 0, 0).toISOString(), locale.expected[test]);
 
           marks.push(mark);
           console.log(`Test ${test} ${locale.name}, run ${run + 1}: ${mark} ms SUCCESS`);
