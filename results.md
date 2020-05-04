@@ -1,12 +1,12 @@
 # Results
 
-External runs: 2
+External runs: 5
 
-Internal runs: 10000
+Internal runs: 1000
 
-- globe en: 2035.875000001397 ms
-- intl en: 2036.427499995625 ms
-- moment en: 108.98500000621425 ms
-- globe cs: 2006.6125000012107 ms
-- intl cs: 1988.527499997872 ms
-- moment cs: 100.30249999545049 ms
+- globe en: 288.75300000072457 ms
+- intl en: 270.08800000476185 ms
+- moment en: 24.52800000028219 ms
+- globe cs: 254.63800000143237 ms
+- intl cs: 261.33800000534393 ms
+- moment cs: 26.21600000129547 ms

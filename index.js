@@ -6,10 +6,10 @@ void async function () {
   // JavaScript code inlining and caching artifacts (might not be a thing
   // that's necessary or perhaps this is not enough and the profile might
   // need to be purged, too, but fow now this is what we have)
-  const externalRuns = 2;
+  const externalRuns = 5;
 
   // How many times to run the `window.test` function found in the test page
-  const internalRuns = 10000;
+  const internalRuns = 1000;
 
   const results = [];
 
