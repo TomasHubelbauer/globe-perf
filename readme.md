@@ -6,14 +6,17 @@ This test only covers using Globe on the web, Node tests are not provided.
 
 ## Running
 
-`./run.sh`
+Run this script in Bash or Posh:
+
+`./run`
 
 ## Results
 
 See [`results.md`](results.md).
 
 Intl is consistently the fastest, Moment is about 5x slower and Globe
-is very slow, about 40x slower than Intl.
+is almost just as fast as Intl as it merely wraps it and caches the Intl
+instance after the cache warm run.
 
 ## To-Do
 
